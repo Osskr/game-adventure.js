@@ -165,14 +165,19 @@ function startGame() {
   
 }
 function showTextNode(textNodeIndex) {
+    //encuentra el nodo
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
+    //actualiza el texto
     textElement.innerText = textNode.text
-    
+    //Remueve los botones previos
     while(optionButtonsElement.firstChild){
+     
         optionButtonsElement.removeChild(optionButtonsElement.firstChild)
     }
-
+    //carga los nuevos botones
     textNode.options.forEach(option =>{
+        //lo muestra si esta disponible
+        
         if(showOption(option)){
                 const button = document.createElement('button')
                 button.innerText= option.text
@@ -181,6 +186,7 @@ function showTextNode(textNodeIndex) {
                 optionButtonsElement.appendChild(button)
         }
     })
+    console.log(state)
 } 
 
 function showOption(option){
